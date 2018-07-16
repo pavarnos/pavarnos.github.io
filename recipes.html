@@ -11,10 +11,26 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
           integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url("recipes.jpg");
+            background-color: #000000;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .content
+        {
+            margin-top: 40px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: rgba(200, 200, 200, 0.85);
+            border-radius: 3px;
+        }
+    </style>
 </head>
 <body>
 <div class="content">
-    <h1>Recipe</h1>
+    <h1>Today&apos;s Recipe</h1>
     <h2>Ingredients</h2>
     <ul>
         <li id="ingredient1"></li>
@@ -27,7 +43,7 @@
         <li id="cook"></li>
         <li id="serve"></li>
     </ul>
-    <button id="next" class="button-success pure-button">New Recipe</button>
+    <button id="next" class="button-success pure-button"><i class="fas fa-redo"></i> New Recipe</button>
 </div>
 <script>
     // a list of ingredients, steps etc
