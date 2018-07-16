@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revolting Recipes</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@1.0.0/build/pure-min.css"
+          integrity="sha256-Q0zCrUs2IfXWYx0uMKJfG93CvF6oVII21waYsAV4/8Q=" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+<body>
+<div class="content">
+    <h1>Recipe</h1>
+    <h2>Ingredients</h2>
+    <ul>
+        <li id="ingredient1"></li>
+        <li id="ingredient2"></li>
+        <li id="ingredient3"></li>
+    </ul>
+    <h2>Instructions</h2>
+    <ul>
+        <li id="mix"></li>
+        <li id="cook"></li>
+        <li id="serve"></li>
+    </ul>
+    <button id="next" class="button-success pure-button">New Recipe</button>
+</div>
+<script>
+    // a list of ingredients, steps etc
+    function List(data) {
+
+        // from https://www.frankmitchell.org/2015/01/fisher-yates/
+        function shuffle(original) {
+            var i = 0, j = 0, temp = null;
+            var array = original.slice(0);
+            for (i = array.length - 1; i > 0; i -= 1) {
+                j = Math.floor(Math.random() * (i + 1));
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp
+            }
+            return array;
+        }
+
+        // a queue of ingredients in random order
+        var shuffled = [];
+
+//        this.take = function (count) {
+//            // return the first count items from the front of the list
+//            if (!count || count < 0) {
+//                count = 1;
+//            }
+//            var result = [];
+//            while (count > 0) {
+//                if (shuffled.length <= 0) {
+//                    shuffled = shuffle(data);
+//                }
+//                result.push(shuffled.shift());
+//                count--;
+//            }
+//            return result;
+//        };
+//
+        // take the next element
+        this.next = function () {
+            if (shuffled.length <= 0) {
+                shuffled = shuffle(data);
+            }
+            return shuffled.shift();
+        }
+    }
+
+    var ingredient = new List([
+        "1/2 elephant",
+        "4 milligrams of flour",
+        "3 tons of rolled oats",
+        "1 pickled hedgehog",
+        "2 tbspn baking powder",
+        "3 spoons crunchy peanut butter",
+        "49 chocolate buttons",
+        "2 tbspn vanilla icecream",
+        "1 cup honey",
+        "2 tons brown sugar",
+        "1 cup wholemeal flour",
+        "3 dozen ostrich eggs",
+        "7 crocodile tears",
+        "4 whales teeth",
+        "1/2 cup chicken feathers",
+        "200ml whipped cream",
+        "500ml shark infested custard",
+        "200 grams melted butter",
+        "1 deep fried eyeball",
+        "5 apple seeds",
+        "300g tin baked beans",
+        "6 walnuts (with shells)",
+        "3 potato skins",
+        "500g squashed kumara",
+        "1 1/2 fresh caterpillars",
+        "2 mummy kisses",
+        "200ml curdled milk",
+        "1.5 litre unicycle grease",
+        "1/2 bucket of used tissues",
+        "6 orange skins",
+        "17 carrots",
+        "1 coloured pencil",
+        "300g fried worms",
+        "1 cup toenail stew",
+        "2 mouldy crusts",
+        "3 squeezed pimples",
+        "7 peeled frogs",
+        "1 chinese cabbage",
+        "750ml stagnant water",
+        "1kg antarctic iceberg",
+        "1 packet dolphin whiskers",
+        "3 stale toast crumbs",
+        "1 tuft of belly button fluff",
+        "1 spoon of toe jam",
+        "3 rotten tomatoes",
+        "2 multi vitamin tablets",
+        "1 catcher of lawn clippings",
+        "3 crisp autumn leaves",
+        "1 bucket beach sand",
+        "1/2 tube superglue",
+        "1 scoop laundry powder",
+        "1 fried witches cackle",
+        "1/2 bucket sheeps tails",
+        "1 purple lipstick",
+        "1/2 cup guinea pig sneeze",
+        "1 anteaters nose",
+        "1 jar grasshoppers legs",
+        "1/2 cup baby dribble",
+        "1 cup cold dandelion tea",
+        "1 ants nest",
+        "2 horse shoes",
+        "1 antelope antenna",
+        "300ml gumboot juice",
+        "200ml condensed dog breath",
+        "1 motorway possum",
+        "13 crushed centipedes",
+        "1 grumpy mood",
+        "1 fairy giggle",
+        "8 baby wipes",
+        "2 puffs of chimney smoke",
+        "1/2 cup fish guts",
+        "2 runny bananas",
+        "1 chrysalis",
+        "1 peck pickled peppers",
+        "1 tablespoon of goat dandruff",
+        "3/4 cup parrot vomit",
+        "2 mouldy tea bags",
+        "1/2 metre of dingo intestine",
+        "2 jars of hippopotamus fart"
+    ]);
+    var mix = new List([
+        "Stir in cement mixer",
+        "Chew carefully and spit back into bowl",
+        "Mix carefully in large bucket",
+        "Suck for 3 hours",
+        "Shake in plastic bag",
+        "Bash with a rolling pin until crumbled",
+        "Whip until frothy",
+        "Beat until tender",
+        "Put in envelope and drive over it with car",
+        "Add in layers in large wheelbarrow",
+        "Press carefully into a large oven tray",
+        "Place in washing machine and spin for 2 cycles",
+        "Tumble dry for 25 minutes",
+        "Stir with a whale bone until green",
+        "Mash between two bricks until soft",
+        "Knead until soft and springy to the touch",
+        "Peg to washing line and spin 20 times",
+        "Pour into bathtub and trample with bare feet",
+        "Toss lightly with salad servers",
+        "Spread in layers onto pizza bases"
+    ]);
+    var cook = new List([
+        "Allow to rot gently for 2 weeks",
+        "Simmer gently over a raging forest fire",
+        "Wrap in a blanket and put under couch for 10 days",
+        "Carry it across the desert by camel for 2 months",
+        "Cook at 250 C for 9 hours",
+        "Put in socks and wear for 8 hours",
+        "Refrigerate until set",
+        "Allow to settle until it stops bubbling",
+        "Boil with a large onion for 29 minutes",
+        "Microwave for 1 minute on High",
+        "Place in freezer for 15 minutes",
+        "Grill for 30 minutes or until crispy",
+        "Place under lounge carpet for 3 days",
+        "Allow to ferment in warm place",
+        "Spread thinly on a library book",
+        "Stir gently with a D8 bulldozer",
+        "Roll in a grubby bath towel and slice thinly",
+        "Tumble in dryer for 30 minutes",
+        "Deep fry in used car oil for 10 minutes",
+        "Barbecue 10 minutes each side",
+        "Stuff into flattened hedgehog and bake on road for 3 hours",
+        "Put it beside the telephone and shout at it for two days",
+        "Allow to ferment in the hot water cupboard",
+        "Pour into garage guttering and allow to set",
+        "Bake into a pie with four-and-twenty black birds",
+        "Spoon carefully into frozen underpants",
+        "Slow cook for 6 hours with mossy brick",
+        "Stuff into a sock and carry in your armpit for 2 days",
+        "Pour into elephant nostril and simmer gently for 15 minutes and 12 seconds exactly"
+    ]);
+    var serve = new List([
+        "Add a dash of chocolate sauce for colour",
+        "Sprinkle with icing sugar",
+        "Serve with warm lettuce and rock salt",
+        "Top with grated cheese and goat toenail clippings",
+        "Garnish with parsley and engine oil",
+        "Serve on pulverised brick with a slice of lemon",
+        "Serve with broccoli and squashed ladybirds",
+        "Top with shaving foam and confetti",
+        "Serve with soggy tramping boots",
+        "Drink with a blue straw",
+        "Serve with pickled eggs and garlic mayonaise",
+        "Serve in a rusty exhaust pipe (with a long spoon)",
+        "Sprinkle with toasted muesli and a cup of fresh snow",
+        "Serve with pickled eyeballs and fresh oysters",
+        "Serve in a car tyre with fresh radiator water",
+        "Serve with a nightmare and a selection of old wives tales",
+        "Serve with croissants and jam",
+        "Serve in an old sunhat with grated petunias",
+        "Sprinkle with pocket fluff and crumbled ear wax",
+        "Serve with popcorn and blue marbles",
+        "Decorate with a swirl of freshmint toothpaste",
+        "Sprinkle with fish scales and dried salamander snot",
+        "Serve on eucalyptus bark with witchety grub sauce",
+        "Serve with rhubarb muffins and green tea",
+        "Serve on an old door mat with green beans and leftover spaghetti",
+        "Serve with thousand island dressing and roasted crab nippers"
+    ]);
+
+    function nextRecipe() {
+        jQuery("#ingredient1").text(ingredient.next());
+        jQuery("#ingredient2").text(ingredient.next());
+        jQuery("#ingredient3").text(ingredient.next());
+        jQuery("#mix").text(mix.next());
+        jQuery("#cook").text(cook.next());
+        jQuery("#serve").text(serve.next());
+    }
+
+    nextRecipe();
+    jQuery("#next").click(nextRecipe);
+</script>
+</body>
+</html>
