@@ -65,22 +65,6 @@
         // a queue of ingredients in random order
         var shuffled = [];
 
-//        this.take = function (count) {
-//            // return the first count items from the front of the list
-//            if (!count || count < 0) {
-//                count = 1;
-//            }
-//            var result = [];
-//            while (count > 0) {
-//                if (shuffled.length <= 0) {
-//                    shuffled = shuffle(data);
-//                }
-//                result.push(shuffled.shift());
-//                count--;
-//            }
-//            return result;
-//        };
-//
         // take the next element
         this.next = function () {
             if (shuffled.length <= 0) {
